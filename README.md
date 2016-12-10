@@ -10,5 +10,5 @@ Java API for accessing GBFS (General Bikeshare Feed Specification) feeds
 ```java
 final Gbfs gbfs = new Gbfs("https://gbfs.citibikenyc.com/gbfs/gbfs.json");
 final List<StationStatus> stationStatusList = gbfs.getStationStatusList();
-final List<StationInfo> stationInfoList = gbfs.getStationInfoList();
+final List<StationInformation> stationInfoList = gbfs.getStationInformationList();
 ```
