@@ -10,14 +10,15 @@ public class Gbfs {
 
     private final FeedProvider feedProvider;
     private final String feedUrl;
+    private final String name;
 
     /**
      * Construct a new GBFS API instance.  TTL caching is set to true.
      *
      * @param feedUrl the main URL of the feed (gbfs.json)
      */
-    public Gbfs(final String feedUrl) {
-        this(feedUrl, new CachingFeedProvider(new HttpFeedProvider(), Clock.systemUTC()));
+    public Gbfs(final String feedUrl, final String name) {
+        this(feedUrl, new CachingFeedProvider(new HttpFeedProvider(), Clock.systemUTC()), name);
     }
 
     /**
@@ -26,7 +27,7 @@ public class Gbfs {
      * @param gbfsSystem a GBFS system constant
      */
     public Gbfs(final GbfsSystem gbfsSystem) {
-        this(gbfsSystem.getFeedUrl());
+        this(gbfsSystem.getFeedUrl(), gbfsSystem.getName());
     }
 
     /**
@@ -35,9 +36,10 @@ public class Gbfs {
      * @param feedUrl the main URL of the feed (gbfs.json)
      * @param feedProvider the feed provider
      */
-    Gbfs(final String feedUrl, final FeedProvider feedProvider) {
+    Gbfs(final String feedUrl, final FeedProvider feedProvider, final String name) {
         this.feedUrl = feedUrl;
         this.feedProvider = feedProvider;
+        this.name = name;
     }
 
     public GbfsFeed getGbfsFeed() {
@@ -88,5 +90,9 @@ public class Gbfs {
 
     public void reset() {
         this.feedProvider.reset();
+    }
+
+    public String getName() {
+        return name;
     }
 }

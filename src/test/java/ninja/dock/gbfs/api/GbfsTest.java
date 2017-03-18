@@ -21,7 +21,7 @@ public class GbfsTest {
     @Before
     public void setUp() {
         feedProvider = mock(HttpFeedProvider.class);
-        gbfs = new Gbfs(GBFS_URL, feedProvider);
+        gbfs = new Gbfs(GBFS_URL, feedProvider, "name");
     }
 
     @Test

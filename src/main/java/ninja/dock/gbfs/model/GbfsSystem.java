@@ -27,6 +27,10 @@ public enum GbfsSystem {
         return timeZone;
     }
 
+    public String getName() {
+        return this.name().toLowerCase();
+    }
+
     public ZonedDateTime currentTime() {
         return ZonedDateTime.now(ZoneId.of(timeZone));
     }
